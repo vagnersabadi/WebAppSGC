@@ -20,6 +20,10 @@ namespace SGC.ApplicationCore.Entity
         //coleção de contatos
         public ICollection<Contato> Contatos { get; set; }
 
+        public Endereco Endereco { get; set; }
+
+        public ICollection<ProfissaoCliente> ProfissoesClientes { get; set; }
+
 
     }
 }
