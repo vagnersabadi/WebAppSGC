@@ -85,7 +85,7 @@ namespace SGC.Infrastructure.Migrations
                         .HasColumnType("varchar(200)");
 
                     b.Property<string>("Referencia")
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("varchar(400)");
 
                     b.HasKey("EnderecoId");
 
@@ -124,7 +124,7 @@ namespace SGC.Infrastructure.Migrations
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("varchar(1005)");
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -159,7 +159,7 @@ namespace SGC.Infrastructure.Migrations
                     b.HasOne("SGC.ApplicationCore.Entity.Cliente", "Cliente")
                         .WithMany("Contatos")
                         .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("SGC.ApplicationCore.Entity.Endereco", b =>
@@ -182,12 +182,12 @@ namespace SGC.Infrastructure.Migrations
                     b.HasOne("SGC.ApplicationCore.Entity.Cliente", "Cliente")
                         .WithMany("ProfissoesClientes")
                         .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("SGC.ApplicationCore.Entity.Profissao", "Profissao")
                         .WithMany("ProfissoesClientes")
                         .HasForeignKey("ProfissaoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

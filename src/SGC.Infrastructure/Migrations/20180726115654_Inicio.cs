@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SGC.Infrastructure.Migrations
 {
-    public partial class Init : Migration
+    public partial class Inicio : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,7 +48,7 @@ namespace SGC.Infrastructure.Migrations
                     Profissaoid = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(type: "varchar(400)", nullable: false),
-                    Descricao = table.Column<string>(type: "varchar(1005)", nullable: false),
+                    Descricao = table.Column<string>(type: "varchar(1000)", nullable: false),
                     CBO = table.Column<string>(type: "varchar(10)", nullable: false)
                 },
                 constraints: table =>
@@ -75,7 +75,7 @@ namespace SGC.Infrastructure.Migrations
                         column: x => x.ClienteId,
                         principalTable: "Cliente",
                         principalColumn: "ClienteId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -87,7 +87,7 @@ namespace SGC.Infrastructure.Migrations
                     Logradouro = table.Column<string>(type: "varchar(200)", nullable: false),
                     Bairro = table.Column<string>(type: "varchar(200)", nullable: false),
                     CEP = table.Column<string>(type: "varchar(15)", nullable: false),
-                    Referencia = table.Column<string>(type: "varchar(200)", nullable: true),
+                    Referencia = table.Column<string>(type: "varchar(400)", nullable: true),
                     ClienteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -118,13 +118,13 @@ namespace SGC.Infrastructure.Migrations
                         column: x => x.ClienteId,
                         principalTable: "Cliente",
                         principalColumn: "ClienteId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ProfissaoCliente_Profissao_ProfissaoId",
                         column: x => x.ProfissaoId,
                         principalTable: "Profissao",
                         principalColumn: "Profissaoid",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
